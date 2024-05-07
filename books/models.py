@@ -1,4 +1,10 @@
-from django.db import models
-
-# Create your models here.
-
+BOOKS = [
+    {
+        "id": 1,
+        "name": "Азбука",
+    },
+    {
+        "id": 2,
+        "name": "Букварь",
+    },
+]

@@ -19,6 +19,8 @@ from django.urls import path
 
 from books import views
 
+handler404 = "books.views.my_custom_page_not_found_view"
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),

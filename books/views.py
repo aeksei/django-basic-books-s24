@@ -33,3 +33,7 @@ def all_books(request: HttpRequest) -> HttpResponse:
             "ensure_ascii": False,
         }
     )
+
+
+def my_custom_page_not_found_view(request: HttpRequest, exception) -> HttpResponse:
+    return HttpResponse("Страница не найдена :(", status=404)

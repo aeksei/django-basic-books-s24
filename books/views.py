@@ -8,7 +8,7 @@ from django.http import (
     Http404,
 )
 
-from books.models import BOOKS
+from books.models import BOOKS, CATEGORIES
 
 
 def current_time(request: HttpRequest) -> HttpResponse:
@@ -69,3 +69,26 @@ def get_detail_book(request, book_id: int):
 
 def my_custom_page_not_found_view(request: HttpRequest, exception) -> HttpResponse:
     return HttpResponse("Страница не найдена :(", status=404)
+
+
+def get_books_by_category(request, category_slug: str):
+    has_category = False
+    for category in CATEGORIES:
+        if category["slug"] == category_slug:
+            has_category = True
+
+    if not has_category:
+        raise Http404
+
+    return JsonResponse(
+        [
+            book
+            for book in BOOKS
+            if book["category"] == category_slug
+        ],
+        safe=False,  # Списки будут серриализоваться
+        json_dumps_params={
+            "indent": 4,
+            "ensure_ascii": False,
+        }
+    )

@@ -8,4 +8,5 @@ urlpatterns = [
     path("books/random-book/", views.random_book),
     path("", views.index),
     path("books/", views.all_books),
+    path("books/<int:book_id>/", views.get_detail_book),
 ]

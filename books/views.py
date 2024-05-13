@@ -28,6 +28,7 @@ def random_book(request: HttpRequest) -> HttpResponse:
 def all_books(request: HttpRequest) -> HttpResponse:
     return JsonResponse(
         BOOKS,
+        safe=False,  # Списки будут серриализоваться
         json_dumps_params={
             "indent": 4,
             "ensure_ascii": False,

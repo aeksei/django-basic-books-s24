@@ -31,8 +31,20 @@ def random_book(request: HttpRequest) -> HttpResponse:
 
 
 def all_books(request: HttpRequest) -> HttpResponse:
+    query_params = request.GET
+    query_published_year = query_params.get("published_year")
+
+    books = BOOKS.copy()
+    if query_published_year is not None:
+        query_published_year = int(query_published_year)
+        books = [
+            book
+            for book in books
+            if book["published_year"] == query_published_year
+        ]
+
     return JsonResponse(
-        BOOKS,
+        books,
         safe=False,  # Списки будут серриализоваться
         json_dumps_params={
             "indent": 4,

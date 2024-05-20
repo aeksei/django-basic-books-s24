@@ -1,81 +1,49 @@
-{% load static %}
+{% extends 'base.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- Обязательные метатеги -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+{% block content %}
+    <h1>Все книги</h1>
 
-    <!-- Подключаем Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-
-    <!-- Подключаем ваши стили -->
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-
-    <title>Библиотека</title>
-</head>
-<body>
-
-    <header>
-        <h1>Библиотека</h1>
-    </header>
-
-    {% include 'includes/nav.html' %}
-
-    <div class="container mt-4">
-        <h1>Все книги</h1>
-
-        <div class="row">
-            <!-- Карточка 1 -->
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Книга 1</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Автор: Автор 1</h6>
-                        <h6 class="card-subtitle mb-2 text-muted">Год издания: 2000</h6>
-                        <p class="card-text">Краткое описание книги</p>
-                        <a href="#" class="btn btn-primary">Подробнее о книге</a>
-                    </div>
+    <div class="row">
+        <!-- Карточка 1 -->
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Книга 1</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Автор: Автор 1</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">Год издания: 2000</h6>
+                    <p class="card-text">Краткое описание книги</p>
+                    <a href="#" class="btn btn-primary">Подробнее о книге</a>
                 </div>
             </div>
-
-            <!-- Карточка 2 -->
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Книга 2</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Автор: Автор 2</h6>
-                        <h6 class="card-subtitle mb-2 text-muted">Год издания: 2000</h6>
-                        <p class="card-text">Краткое описание книги</p>
-                        <a href="#" class="btn btn-primary">Подробнее о книге</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Карточка 3 -->
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Книга 3</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Автор: Автор 3</h6>
-                        <h6 class="card-subtitle mb-2 text-muted">Год издания: 2000</h6>
-                        <p class="card-text">Краткое описание книги</p>
-                        <a href="#" class="btn btn-primary">Подробнее о книге</a>
-                    </div>
-                </div>
-            </div>
-
-            <button type="button" class="btn btn-primary btn-lg btn-block">Посмотреть все книги ...</button>
-
         </div>
+
+        <!-- Карточка 2 -->
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Книга 2</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Автор: Автор 2</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">Год издания: 2000</h6>
+                    <p class="card-text">Краткое описание книги</p>
+                    <a href="#" class="btn btn-primary">Подробнее о книге</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Карточка 3 -->
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Книга 3</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Автор: Автор 3</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">Год издания: 2000</h6>
+                    <p class="card-text">Краткое описание книги</p>
+                    <a href="#" class="btn btn-primary">Подробнее о книге</a>
+                </div>
+            </div>
+        </div>
+
+        <button type="button" class="btn btn-primary btn-lg btn-block">Посмотреть все книги ...</button>
+
     </div>
-
-    <footer class="bg-dark text-white text-center py-3 mt-4">
-        &copy; 2023 Библиотека. Все права защищены.
-    </footer>
-
-    <!-- Подключаем Необязательный JavaScript (необходим для работы некоторых Bootstrap компонентов) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-</body>
-</html>
+{% endblock %}

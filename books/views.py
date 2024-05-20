@@ -19,7 +19,10 @@ def current_time(request: HttpRequest) -> HttpResponse:
 
 def index(request: HttpRequest) -> HttpResponse:
     template_name = "index.html"
-    return render(request, template_name)
+    context = {
+        "books_list": BOOKS,
+    }
+    return render(request, template_name, context)
 
 
 def random_book(request: HttpRequest) -> HttpResponse:

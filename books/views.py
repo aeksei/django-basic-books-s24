@@ -59,15 +59,10 @@ def all_books(request: HttpRequest) -> HttpResponse:
 
 
 def get_detail_book(request, book_id: int):
+    template_name = "books/book_detail.html"
     for book in BOOKS:
         if book["id"] == book_id:
-            return JsonResponse(
-                book,
-                json_dumps_params={
-                    "indent": 4,
-                    "ensure_ascii": False,
-                }
-            )
+            return render(request, template_name, {"book_dict": book})
 
     raise Http404
 

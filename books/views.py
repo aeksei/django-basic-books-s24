@@ -47,15 +47,11 @@ def all_books(request: HttpRequest) -> HttpResponse:
             for book in books
             if book["published_year"] == query_published_year
         ]
-
-    return JsonResponse(
-        books,
-        safe=False,  # Списки будут серриализоваться
-        json_dumps_params={
-            "indent": 4,
-            "ensure_ascii": False,
-        }
-    )
+    template_name = "books/book_list.html"
+    context = {
+        "books_list": books,
+    }
+    return render(request, template_name, context)
 
 
 def get_detail_book(request, book_id: int):

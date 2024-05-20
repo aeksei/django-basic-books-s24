@@ -7,6 +7,7 @@ from django.http import (
     JsonResponse,
     Http404,
 )
+from django.shortcuts import render
 
 from books.models import BOOKS, CATEGORIES
 
@@ -17,7 +18,8 @@ def current_time(request: HttpRequest) -> HttpResponse:
 
 
 def index(request: HttpRequest) -> HttpResponse:
-    return HttpResponse("<h1>Добро пожаловать в библиотеку!!!</h1>")
+    template_name = "index.html"
+    return render(request, template_name)
 
 
 def random_book(request: HttpRequest) -> HttpResponse:
@@ -92,3 +94,8 @@ def get_books_by_category(request, category_slug: str):
             "ensure_ascii": False,
         }
     )
+
+
+def about(request):
+    template_name = "about.html"
+    return render(request, template_name)

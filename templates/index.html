@@ -1,0 +1,105 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Обязательные метатеги -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Подключаем Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <!-- Подключаем ваши стили -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    <title>Библиотека</title>
+</head>
+<body>
+
+    <header>
+        <h1>Библиотека</h1>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Главная</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Категории
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Романы</a></li>
+                            <li><a class="dropdown-item" href="#">Наука</a></li>
+                            <li><a class="dropdown-item" href="#">Фантастика</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">О библиотеке</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h1>Все книги</h1>
+
+        <div class="row">
+            <!-- Карточка 1 -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Книга 1</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Автор: Автор 1</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">Год издания: 2000</h6>
+                        <p class="card-text">Краткое описание книги</p>
+                        <a href="#" class="btn btn-primary">Подробнее о книге</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Карточка 2 -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Книга 2</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Автор: Автор 2</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">Год издания: 2000</h6>
+                        <p class="card-text">Краткое описание книги</p>
+                        <a href="#" class="btn btn-primary">Подробнее о книге</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Карточка 3 -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Книга 3</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Автор: Автор 3</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">Год издания: 2000</h6>
+                        <p class="card-text">Краткое описание книги</p>
+                        <a href="#" class="btn btn-primary">Подробнее о книге</a>
+                    </div>
+                </div>
+            </div>
+
+            <button type="button" class="btn btn-primary btn-lg btn-block">Посмотреть все книги ...</button>
+
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3 mt-4">
+        &copy; 2023 Библиотека. Все права защищены.
+    </footer>
+
+    <!-- Подключаем Необязательный JavaScript (необходим для работы некоторых Bootstrap компонентов) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+</body>
+</html>

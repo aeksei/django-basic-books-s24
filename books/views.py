@@ -7,6 +7,7 @@ from django.http import (
     JsonResponse,
     Http404,
 )
+from django.shortcuts import render
 
 from books.models import BOOKS, CATEGORIES
 
@@ -17,7 +18,11 @@ def current_time(request: HttpRequest) -> HttpResponse:
 
 
 def index(request: HttpRequest) -> HttpResponse:
-    return HttpResponse("<h1>Добро пожаловать в библиотеку!!!</h1>")
+    template_name = "index.html"
+    context = {
+        "books_list": BOOKS,
+    }
+    return render(request, template_name, context)
 
 
 def random_book(request: HttpRequest) -> HttpResponse:
@@ -42,27 +47,18 @@ def all_books(request: HttpRequest) -> HttpResponse:
             for book in books
             if book["published_year"] == query_published_year
         ]
-
-    return JsonResponse(
-        books,
-        safe=False,  # Списки будут серриализоваться
-        json_dumps_params={
-            "indent": 4,
-            "ensure_ascii": False,
-        }
-    )
+    template_name = "books/book_list.html"
+    context = {
+        "books_list": books,
+    }
+    return render(request, template_name, context)
 
 
 def get_detail_book(request, book_id: int):
+    template_name = "books/book_detail.html"
     for book in BOOKS:
         if book["id"] == book_id:
-            return JsonResponse(
-                book,
-                json_dumps_params={
-                    "indent": 4,
-                    "ensure_ascii": False,
-                }
-            )
+            return render(request, template_name, {"book_dict": book})
 
     raise Http404
 
@@ -92,3 +88,8 @@ def get_books_by_category(request, category_slug: str):
             "ensure_ascii": False,
         }
     )
+
+
+def about(request):
+    template_name = "about.html"
+    return render(request, template_name)

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{ book_dict.title }}</h5>
+            <p class="card-text">
+                <b>Автор:</b> {{ book_dict.author }}
+            </p>
+            <p class="card-text">
+                <b>Год издания:</b> {{ book_dict.published_year }}
+            </p>
+            <!-- Другие детали книги могут быть добавлены в зависимости от ваших нужд -->
+            <hr>
+            <h5 class="card-title">Описание книги</h5>
+            <p class="card-text"> {{ book_dict.description }}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Все книги</h1>
+
+    <form>
+      <div class="mb-3">
+        <label for="published_year" class="form-label">Год издания</label>
+        <input type="number" class="form-control" id="published_year" name="published_year" pattern="\d+">
+      </div>
+      <button type="submit" class="btn btn-primary">Отфильтровать</button>
+    </form>
+
+    <div class="row">
+        {% for book_dict in books_list %}
+            <!-- Карточка 1 -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ book_dict.title }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Автор: {{ book_dict.author }}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">Год издания: {{ book_dict.published_year }}</h6>
+                        <p class="card-text">{{ book_dict.description|truncatewords:5 }}</p>
+                        <a href="{% url 'books:book-detail' book_dict.id %}" class="btn btn-outline-secondary">Подробнее о книге</a>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p>Нет книг в библиотеке ...</p>
+        {% endfor %}
+    </div>
+{% endblock %}

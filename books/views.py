@@ -8,6 +8,7 @@ from django.http import (
     Http404,
 )
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
 from books.models import BOOKS, CATEGORIES
 
@@ -17,6 +18,7 @@ def current_time(request: HttpRequest) -> HttpResponse:
     return HttpResponse(now)
 
 
+@login_required
 def index(request: HttpRequest) -> HttpResponse:
     template_name = "index.html"
     context = {

@@ -11,6 +11,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
 from books.models import BOOKS, CATEGORIES
+from books.services import get_object_or_404
 
 
 def current_time(request: HttpRequest) -> HttpResponse:
@@ -58,11 +59,11 @@ def all_books(request: HttpRequest) -> HttpResponse:
 
 def get_detail_book(request, book_id: int):
     template_name = "books/book_detail.html"
-    for book in BOOKS:
-        if book["id"] == book_id:
-            return render(request, template_name, {"book_dict": book})
-
-    raise Http404
+    book = get_object_or_404(BOOKS, id=book_id)
+    context = {
+        "book_dict": book
+    }
+    return render(request, template_name, context)
 
 
 def my_custom_page_not_found_view(request: HttpRequest, exception) -> HttpResponse:
@@ -70,19 +71,13 @@ def my_custom_page_not_found_view(request: HttpRequest, exception) -> HttpRespon
 
 
 def get_books_by_category(request, category_slug: str):
-    has_category = False
-    for category in CATEGORIES:
-        if category["slug"] == category_slug:
-            has_category = True
-
-    if not has_category:
-        raise Http404
+    category = get_object_or_404(CATEGORIES, slug=category_slug)
 
     return JsonResponse(
         [
             book
             for book in BOOKS
-            if book["category"] == category_slug
+            if book["category"] == category["slug"]
         ],
         safe=False,  # Списки будут серриализоваться
         json_dumps_params={
